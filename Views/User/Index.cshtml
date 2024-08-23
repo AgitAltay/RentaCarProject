@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Rac.entity.DTOs.CarDto>
+
+@{
+    ViewData["Title"] = "Cars";
+}
+
+<h1>Available Cars</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Daily Price</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Description</td>
+                <td>@car.Model</td>
+                <td>@car.Year</td>
+                <td>@car.DailyPrice</td>
+                <td><img src="/img/@car.Image" alt="Car Image" width="100" /></td>
+                <td>
+                    <form asp-action="Reserve" method="post">
+                        <input type="hidden" name="id" value="@car.Id" />
+                        <button type="submit" class="btn btn-primary">Reserve</button>
+                    </form>
+                    <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

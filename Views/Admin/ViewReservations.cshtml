@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ReservationDto>
+
+<h2>Kiralanan Araçlar</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rezervasyon ID</th>
+            <th>Kullanıcı ID</th>
+            <th>Araba ID</th>
+            <th>Başlangıç Tarihi</th>
+            <th>Bitiş Tarihi</th>
+            <th>Aktif</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.Id</td>
+                <td>@reservation.CustomerId</td>
+                <td>@reservation.CarId</td>
+                <td>@reservation.StartDate</td>
+                <td>@reservation.EndDate</td>
+                <td>@reservation.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>

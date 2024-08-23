@@ -1,0 +1,22 @@
+﻿@model Rac.Web.Models.ReserveViewModel
+
+<h2>Reserve Car</h2>
+
+<form asp-action="Reserve" method="post">
+    <div class="form-group">
+        <label asp-for="CarId" class="control-label"></label>
+        <input asp-for="CarId" class="form-control" readonly />
+        <span asp-validation-for="CarId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StartDate" class="control-label"></label>
+        <input asp-for="StartDate" class="form-control" type="date" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EndDate" class="control-label"></label>
+        <input asp-for="EndDate" class="form-control" type="date" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Reserve</button>
+</form>

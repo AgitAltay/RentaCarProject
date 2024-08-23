@@ -1,0 +1,49 @@
+﻿@model IEnumerable<@Rac.entity.DTOs.ReservationDto>
+
+
+
+@{
+    ViewData["Title"] = "Reservation List";
+}
+
+<h2>Reservation List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Car ID</th>
+            <th>User Email</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@reservation.Id</td>
+                <td>@reservation.CarId</td>
+                <td>@reservation.StartDate.ToShortDateString()</td>
+                <td>@reservation.EndDate.ToShortDateString()</td>
+                <td>
+                    <!-- Status kontrolü için örnek -->
+                    @if (reservation.IsDeleted)
+                    {
+                        <span class="text-danger">Cancelled</span>
+                    }
+                    else
+                    {
+                        <span class="text-success">Active</span>
+                    }
+                </td>
+                <td>
+                    <!-- Rezervasyonları iptal etme işlemi -->
+                    <a asp-action="CancelReservation" asp-route-id="@reservation.Id" class="btn btn-danger">Cancel</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

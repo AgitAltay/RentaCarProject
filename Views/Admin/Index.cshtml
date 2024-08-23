@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Rac.entity.DTOs.CarDto>
+
+@{
+    ViewData["Title"] = "Car List";
+}
+
+<h2>Car List</h2>
+<div>
+    <a href="@Url.Action("RentedCars", "Admin")" class="btn btn-primary">Kiralanan Araçlar</a>
+    <a href="@Url.Action("AvailableCars", "Admin")" class="btn btn-secondary">Kiralanmayan Araçlar</a>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Car</a>
+</p>
+<form asp-action="Search" method="get" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search by model or description" aria-label="Search" name="query">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Description</th>
+            <th>Year</th>
+            <th>Daily Price</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Id</td>
+                <td>@car.Model</td>
+                <td>@car.Description</td>
+                <td>@car.Year</td>
+                <td>@car.DailyPrice</td>
+                <td><img src="/img/@car.Image" alt="Car Image" style="width:100px; height:auto;" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

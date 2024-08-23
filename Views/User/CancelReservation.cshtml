@@ -1,0 +1,27 @@
+﻿@model Rac.entity.DTOs.ReservationDto
+
+@{
+    ViewData["Title"] = "Cancel Reservation";
+}
+
+<h2>Cancel Reservation</h2>
+
+<form asp-action="CancelReservation">
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control" readonly />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+   
+    <div class="form-group">
+        <label asp-for="StartDate" class="control-label"></label>
+        <input asp-for="StartDate" class="form-control" readonly />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EndDate" class="control-label"></label>
+        <input asp-for="EndDate" class="form-control" readonly />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+</form>
